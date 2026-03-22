@@ -1,0 +1,46 @@
+name: Validate Skills
+
+on:
+  push:
+    paths:
+      - 'skills/**'
+  pull_request:
+    paths:
+      - 'skills/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check every skill has SKILL.md
+        run: |
+          failed=0
+          # Find all leaf directories under skills/ that contain files
+          while IFS= read -r -d '' dir; do
+            # Check if this directory has files but no SKILL.md
+            if ls "$dir"/*.md 2>/dev/null | grep -v SKILL.md | grep -q . || ls "$dir"/*.py 2>/dev/null | grep -q .; then
+              if [[ ! -f "$dir/SKILL.md" ]]; then
+                echo "❌ Missing SKILL.md in: $dir"
+                failed=1
+              fi
+            fi
+          done < <(find skills -mindepth 2 -type d -print0)
+          
+          # Also check all SKILL.md files have required frontmatter
+          while IFS= read -r -d '' skill; do
+            if ! grep -q "^name:" "$skill"; then
+              echo "❌ Missing 'name:' frontmatter in: $skill"
+              failed=1
+            fi
+            if ! grep -q "^description:" "$skill"; then
+              echo "❌ Missing 'description:' frontmatter in: $skill"
+              failed=1
+            fi
+          done < <(find skills -name "SKILL.md" -print0)
+          
+          if [[ $failed -eq 1 ]]; then
+            exit 1
+          fi
+          echo "✅ All skills valid"
