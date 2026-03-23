@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tutoring Guide — Q36 &amp; Q38</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<style>
+  @page { size: letter; margin: 0.5in 0.5in 0.45in 0.5in; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', 'Times New Roman', serif; font-size: 9pt; line-height: 1.45; color: #1a1a1a; }
+
+  /* Course tag top-left */
+  .course-tag { font-size: 8pt; font-weight: 700; color: #dc2626; margin-bottom: 4px; }
+
+  /* Header */
+  .header { text-align: center; padding-bottom: 6px; border-bottom: 3px solid #4f46e5; margin-bottom: 10px; }
+  .header h1 { font-size: 16pt; color: #4f46e5; margin-bottom: 2px; }
+  .header .sub { font-size: 9pt; color: #666; }
+
+  /* Concept boxes */
+  .concept-box {
+    background: #eef2ff;
+    border-left: 4px solid #4f46e5;
+    border-radius: 0 6px 6px 0;
+    padding: 6px 10px;
+    margin: 6px 0;
+    page-break-inside: avoid;
+  }
+  .concept-box h3 { color: #4f46e5; font-size: 9.5pt; margin-bottom: 3px; }
+
+  /* Problem box */
+  .problem-box {
+    background: #fefce8;
+    border: 2px solid #eab308;
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin: 8px 0;
+    page-break-inside: avoid;
+  }
+  .problem-box h2 { color: #a16207; font-size: 10.5pt; margin-bottom: 3px; }
+
+  /* Step cards */
+  .step {
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+    margin: 5px 0;
+    overflow: hidden;
+    page-break-inside: avoid;
+  }
+  .step-header {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    font-weight: 700;
+    font-size: 9pt;
+    color: #fff;
+  }
+  .step-header .step-num {
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    width: 22px; height: 22px;
+    display: flex; align-items: center; justify-content: center;
+    margin-right: 8px; font-size: 10pt;
+  }
+  .step-body { padding: 5px 10px; background: #fff; }
+  .step-body p { margin: 2px 0; }
+
+  /* Color themes for steps */
+  .step-purple .step-header { background: #7c3aed; }
+  .step-blue .step-header { background: #2563eb; }
+  .step-green .step-header { background: #16a34a; }
+  .step-amber .step-header { background: #d97706; }
+  .step-teal .step-header { background: #0d9488; }
+  .step-rose .step-header { background: #e11d48; }
+
+  /* Try-it box */
+  .try-it {
+    background: #f0fdf4;
+    border: 2px dashed #22c55e;
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin: 6px 0;
+    page-break-inside: avoid;
+  }
+  .try-it h3 { color: #16a34a; font-size: 9.5pt; margin-bottom: 3px; }
+  .try-it .work-area {
+    margin: 6px 0;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    background: #fff;
+    min-height: 80px;
+    position: relative;
+  }
+  .try-it .work-area::before {
+    content: 'Your work here';
+    position: absolute; top: 3px; right: 8px;
+    font-size: 7.5pt; color: #aaa; font-style: italic;
+  }
+
+  /* Tip callout */
+  .tip {
+    background: #fff7ed;
+    border-left: 4px solid #f97316;
+    border-radius: 0 4px 4px 0;
+    padding: 4px 10px;
+    margin: 5px 0;
+    font-size: 8.5pt;
+    page-break-inside: avoid;
+  }
+  .tip::before { content: '💡 '; }
+
+  /* Warning callout */
+  .warn {
+    background: #fef2f2;
+    border-left: 4px solid #ef4444;
+    border-radius: 0 4px 4px 0;
+    padding: 4px 10px;
+    margin: 5px 0;
+    font-size: 8.5pt;
+    page-break-inside: avoid;
+  }
+  .warn::before { content: '⚠️ '; }
+
+  /* Divider */
+  .divider { border: none; border-top: 2px dashed #d0d0d0; margin: 10px 0; }
+
+  .page-break { page-break-before: always; }
+
+  /* Math display centering */
+  .math-display { text-align: center; margin: 4px 0; font-size: 9.5pt; }
+
+  /* Summary box */
+  .summary {
+    background: #f5f3ff;
+    border: 2px solid #8b5cf6;
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin: 8px 0;
+    page-break-inside: avoid;
+  }
+  .summary h3 { color: #6d28d9; font-size: 9.5pt; margin-bottom: 4px; }
+  .summary ul { margin-left: 18px; }
+  .summary li { margin: 2px 0; }
+
+  .footer { text-align: center; font-size: 8pt; color: #999; border-top: 0.5px solid #ccc; padding-top: 4px; margin-top: 14px; }
+</style>
+</head>
+<body>
+
+<!-- ========== COURSE TAG ========== -->
+<div class="course-tag">IM 2 Honors &nbsp;|&nbsp; Module 9.3 — Discriminant &amp; Complex Numbers &nbsp;|&nbsp; 2026-03-22</div>
+
+<!-- ========== HEADER ========== -->
+<div class="header">
+  <h1>🎓 Tutoring Guide</h1>
+  <div class="sub">Q36: Why Complex Roots Come in Conjugate Pairs &bull; Q38: Finding <em>k</em> from Complex Roots</div>
+</div>
+
+<!-- ========== PREREQUISITE CONCEPTS ========== -->
+<div class="concept-box">
+  <h3>📌 Key Concepts You Already Know</h3>
+  <p><b>Quadratic Formula:</b> For $ax^2+bx+c=0$, the solutions are $x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}$</p>
+  <p><b>Discriminant:</b> $\Delta = b^2-4ac$. When $\Delta < 0$, the roots are complex (imaginary).</p>
+  <p><b>Complex Conjugate:</b> The conjugate of $p + qi$ is $p - qi$. Same real part, opposite imaginary part.</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- Q36                                                           -->
+<!-- ============================================================ -->
+<hr class="divider">
+
+<div class="problem-box">
+  <h2>Q36 — Prove that complex solutions of a real-coefficient quadratic are always conjugates</h2>
+  <p><em>Show that if $ax^2+bx+c=0$ (with real $a, b, c$; $a \ne 0$) has two complex solutions, they must be conjugates of each other.</em></p>
+</div>
+
+<div class="tip">This is a <b>proof</b> question. You're not solving for a specific number — you're explaining <em>why</em> something is always true. The quadratic formula is your main tool.</div>
+
+<div class="step step-purple">
+  <div class="step-header"><span class="step-num">1</span> Write the Quadratic Formula</div>
+  <div class="step-body">
+    <p>Start with the general quadratic $ax^2+bx+c=0$ where $a, b, c$ are all <b>real numbers</b>.</p>
+    <p>The two solutions are:</p>
+    <div class="math-display">$$x_1 = \frac{-b + \sqrt{b^2-4ac}}{2a} \qquad \text{and} \qquad x_2 = \frac{-b - \sqrt{b^2-4ac}}{2a}$$</div>
+    <p>Notice: the only difference between $x_1$ and $x_2$ is the $\pm$ sign in front of $\sqrt{\Delta}$.</p>
+  </div>
+</div>
+
+<div class="step step-blue">
+  <div class="step-header"><span class="step-num">2</span> What happens when $\Delta < 0$?</div>
+  <div class="step-body">
+    <p>When $b^2-4ac < 0$, we're taking the square root of a <b>negative number</b>.</p>
+    <p>Let's call $\Delta = b^2-4ac$. Since $\Delta < 0$, we can write $\Delta = -|\Delta|$ where $|\Delta|$ is the positive value.</p>
+    <div class="math-display">$$\sqrt{\Delta} = \sqrt{-|\Delta|} = i\sqrt{|\Delta|}$$</div>
+    <p>So the two solutions become:</p>
+    <div class="math-display">$$x_1 = \frac{-b}{2a} + \frac{\sqrt{|\Delta|}}{2a}\,i \qquad \text{and} \qquad x_2 = \frac{-b}{2a} - \frac{\sqrt{|\Delta|}}{2a}\,i$$</div>
+  </div>
+</div>
+
+<div class="step step-green">
+  <div class="step-header"><span class="step-num">3</span> Identify the real and imaginary parts</div>
+  <div class="step-body">
+    <p>Both solutions have the form $p \pm qi$ where:</p>
+    <div class="math-display">$$p = \frac{-b}{2a} \quad \text{(real part — same for both!)} \qquad q = \frac{\sqrt{|\Delta|}}{2a} \quad \text{(imaginary coefficient — same magnitude!)}$$</div>
+    <p>So: &ensp; $x_1 = p + qi$ &ensp; and &ensp; $x_2 = p - qi$</p>
+  </div>
+</div>
+
+<div class="step step-amber">
+  <div class="step-header"><span class="step-num">4</span> Conclude: they are conjugates! ✅</div>
+  <div class="step-body">
+    <p>By definition, $p+qi$ and $p-qi$ are <b>complex conjugates</b>.</p>
+    <p>Since $a, b, c$ are real, the real part $\dfrac{-b}{2a}$ is <b>identical</b> for both roots, and the imaginary parts $\pm\dfrac{\sqrt{|\Delta|}}{2a}$ are <b>equal in magnitude but opposite in sign</b>.</p>
+    <p>Therefore, whenever a quadratic with real coefficients has complex roots, those roots <b>must</b> be conjugates. $\blacksquare$</p>
+  </div>
+</div>
+
+<div class="warn"><b>Common mistake:</b> Don't just say "because of the $\pm$." You need to explicitly show that the $\pm$ only affects the imaginary part, and the real part stays the same — that's what makes them conjugates specifically.</div>
+
+<div class="tip">The key insight: the $\pm$ in the quadratic formula creates two solutions that differ only by the sign of the imaginary part. That's literally the definition of conjugates!</div>
+
+<div class="try-it">
+  <h3>🏋️ Practice — Write It In Your Own Words</h3>
+  <p>Rewrite the proof of Q36 below without looking above. Use the quadratic formula and show the two roots are conjugates.</p>
+  <div class="work-area" style="min-height: 90px;"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Q38                                                           -->
+<!-- ============================================================ -->
+<div class="page-break"></div>
+
+<div class="problem-box">
+  <h2>Q38 — The roots of $x^2-6x+k=0$ are $3+2i$ and $3-2i$. Find $k$, then verify.</h2>
+</div>
+
+<div class="concept-box">
+  <h3>📌 Two Key Tools For This Problem</h3>
+  <p><b>Tool 1 — Sum of roots:</b> For $x^2+bx+c=0$, the sum of roots $= -b$</p>
+  <p><b>Tool 2 — Product of roots:</b> For $x^2+bx+c=0$, the product of roots $= c$</p>
+  <p><b>Tool 3 — Direct substitution:</b> If $r$ is a root, then plugging $r$ into the equation gives 0.</p>
+</div>
+
+<div class="tip">There are <b>three methods</b> to solve this. We'll learn all three — pick the one that feels most natural to you!</div>
+
+<hr class="divider">
+<h3 style="color:#7c3aed; margin: 8px 0;">Method A — Product of Roots (Fastest! ⚡)</h3>
+
+<div class="step step-purple">
+  <div class="step-header"><span class="step-num">1</span> Identify that $k$ equals the product of the roots</div>
+  <div class="step-body">
+    <p>For $x^2 - 6x + k = 0$, compare with $x^2 + bx + c = 0$:</p>
+    <p>Here $b = -6$ and $c = k$. The product of roots $= c = k$.</p>
+    <p>So: $k = (3+2i)(3-2i)$</p>
+  </div>
+</div>
+
+<div class="step step-blue">
+  <div class="step-header"><span class="step-num">2</span> Multiply the conjugate pair</div>
+  <div class="step-body">
+    <p>Use the pattern $(a+bi)(a-bi) = a^2 + b^2$:</p>
+    <div class="math-display">$$k = (3+2i)(3-2i) = 3^2 + 2^2 = 9 + 4 = 13$$</div>
+    <div class="tip" style="margin-top:6px;">Conjugate pairs always multiply to a <b>real number</b>: $a^2+b^2$. No FOIL needed if you remember this pattern!</div>
+  </div>
+</div>
+
+<hr class="divider">
+<h3 style="color:#2563eb; margin: 8px 0;">Method B — Build the Equation from Roots</h3>
+
+<div class="step step-blue">
+  <div class="step-header"><span class="step-num">1</span> Write the factored form</div>
+  <div class="step-body">
+    <p>If the roots are $3+2i$ and $3-2i$, the equation is:</p>
+    <div class="math-display">$$(x - (3+2i))(x - (3-2i)) = 0$$</div>
+    <p>Simplify the factors:</p>
+    <div class="math-display">$$((x-3) - 2i)((x-3) + 2i) = 0$$</div>
+  </div>
+</div>
+
+<div class="step step-teal">
+  <div class="step-header"><span class="step-num">2</span> Expand using difference of squares</div>
+  <div class="step-body">
+    <p>This is the pattern $(A - B)(A + B) = A^2 - B^2$ with $A = (x-3)$ and $B = 2i$:</p>
+    <div class="math-display">$$(x-3)^2 - (2i)^2 = (x-3)^2 - 4i^2 = (x-3)^2 + 4$$</div>
+    <p>Expand $(x-3)^2$:</p>
+    <div class="math-display">$$x^2 - 6x + 9 + 4 = x^2 - 6x + 13 = 0$$</div>
+    <p>So $k = 13$. ✅</p>
+  </div>
+</div>
+
+<hr class="divider">
+<h3 style="color:#16a34a; margin: 8px 0;">Method C — Direct Substitution</h3>
+
+<div class="step step-green">
+  <div class="step-header"><span class="step-num">1</span> Plug one root into the equation</div>
+  <div class="step-body">
+    <p>Since $x = 3+2i$ is a root, it satisfies $x^2 - 6x + k = 0$:</p>
+    <div class="math-display">$$(3+2i)^2 - 6(3+2i) + k = 0$$</div>
+  </div>
+</div>
+
+<div class="step step-amber">
+  <div class="step-header"><span class="step-num">2</span> Expand each part</div>
+  <div class="step-body">
+    <p><b>$(3+2i)^2$:</b> &ensp; $= 9 + 12i + 4i^2 = 9 + 12i - 4 = 5 + 12i$</p>
+    <p><b>$-6(3+2i)$:</b> &ensp; $= -18 - 12i$</p>
+    <p><b>Combine:</b></p>
+    <div class="math-display">$$(5+12i) + (-18-12i) + k = 0$$</div>
+    <div class="math-display">$$-13 + 0i + k = 0$$</div>
+    <div class="math-display">$$k = 13$$</div>
+  </div>
+</div>
+
+<div class="tip">Notice how the imaginary parts ($+12i$ and $-12i$) cancel out perfectly! This always happens with real coefficients — because conjugate roots guarantee real $k$.</div>
+
+<hr class="divider">
+<h3 style="color:#e11d48; margin: 8px 0;">Verification Step (Required!)</h3>
+
+<div class="step step-rose">
+  <div class="step-header"><span class="step-num">✓</span> Verify using the discriminant</div>
+  <div class="step-body">
+    <p>With $k=13$, the equation is $x^2-6x+13=0$.</p>
+    <div class="math-display">$$\Delta = (-6)^2 - 4(1)(13) = 36 - 52 = -16$$</div>
+    <p>Quadratic formula:</p>
+    <div class="math-display">$$x = \frac{6 \pm \sqrt{-16}}{2} = \frac{6 \pm 4i}{2} = 3 \pm 2i \quad \checkmark$$</div>
+    <p>This matches the given roots $3+2i$ and $3-2i$. ✅</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="summary">
+  <h3>📋 Summary — What You Learned</h3>
+  <ul>
+    <li><b>Q36:</b> The $\pm$ in the quadratic formula means the two complex roots always have the same real part and opposite imaginary parts → they're conjugates by definition.</li>
+    <li><b>Q38:</b> Three ways to find $k$: product of roots (fastest), build equation from factors, or direct substitution. All give $k=13$.</li>
+    <li><b>Conjugate product shortcut:</b> $(a+bi)(a-bi) = a^2+b^2$ — no FOIL needed!</li>
+    <li><b>Always verify</b> by plugging $k$ back in and solving with the quadratic formula.</li>
+  </ul>
+</div>
+
+<div class="try-it">
+  <h3>🏋️ Practice Problem 1</h3>
+  <p>The roots of $x^2-10x+k=0$ are $5+3i$ and $5-3i$. Find $k$ and verify.</p>
+  <div class="work-area" style="min-height: 70px;"></div>
+</div>
+
+<div class="try-it">
+  <h3>🏋️ Practice Problem 2</h3>
+  <p>The roots of $x^2+4x+k=0$ are $-2+i\sqrt{5}$ and $-2-i\sqrt{5}$. Find $k$ and verify.</p>
+  <div class="work-area" style="min-height: 70px;"></div>
+</div>
+
+<div class="try-it">
+  <h3>🏋️ Practice Problem 3</h3>
+  <p>Show that the complex solutions of $2x^2-4x+5=0$ are conjugates. Find them explicitly.</p>
+  <div class="work-area" style="min-height: 70px;"></div>
+</div>
+
+<hr class="divider">
+
+<div class="summary" style="background:#fef2f2; border-color:#ef4444;">
+  <h3 style="color:#dc2626;">🔑 Practice Answers</h3>
+  <ul>
+    <li><b>Practice 1:</b> $k = 5^2+3^2=34$. Verify: $\Delta=100-136=-36$, $x=\frac{10\pm6i}{2}=5\pm3i$ ✓</li>
+    <li><b>Practice 2:</b> $k=(-2)^2+(\sqrt{5})^2=4+5=9$. Verify: $\Delta=16-36=-20$, $x=\frac{-4\pm2i\sqrt{5}}{2}=-2\pm i\sqrt{5}$ ✓</li>
+    <li><b>Practice 3:</b> $\Delta=16-40=-24$. $x=\frac{4\pm\sqrt{-24}}{4}=\frac{4\pm 2i\sqrt{6}}{4}=1\pm\frac{\sqrt{6}}{2}i$. Conjugates: same real part ($1$), opposite imaginary ($\pm\frac{\sqrt{6}}{2}$). ✓</li>
+  </ul>
+</div>
+
+</body>
+</html>
